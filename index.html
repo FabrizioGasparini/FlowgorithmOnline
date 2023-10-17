@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FlowgorithmOnline</title>
+  <link href="style.css" rel="stylesheet">
+  <script src="new_script.js" defer></script>
+  <script src="https://kit.fontawesome.com/311c71b442.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body data-bs-theme=dark>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <img src="images/FlogorithmOnline.svg" alt="Logo" class="logo bi me-2" height="40">
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </header>
+
+    <div class="canvas" id="canvas">
+      <div class="commands">
+        <button id="add-diagram"><i class="fa-solid fa-plus"></i></button>
+      </div>
+      <div id="contextMenu" class="hidden">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+          <div class="d-flex">
+            <div class="list-group lg-left">
+              <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Lettura / Scrittura</h6>
+                  </div>
+                </div>
+              </div>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="lettura" aria-current="true">
+                <div class="diagram-small lettura">
+                  <div class="content">
+                    Lettura
+                  </div>
+                </div>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Lettura</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="scrittura" aria-current="true">
+                <div class="diagram-small scrittura">
+                  <div class="content">
+                    Scrittura
+                  </div>
+                </div>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Scrittura</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+              <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Variabili</h6>
+                  </div>
+                </div>
+              </div>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="dichiarazione" aria-current="true">
+                <div class="diagram-small dichiarazione">
+                  <div class="v-line"></div>
+                  <div class="h-line"></div>
+                  <p>Dichiarazione</p>
+                </div>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Dichiarazione</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="assegnazione" aria-current="true">
+                <div class="diagram-small assegnazione">
+                  <div class="content">
+                    Assegnazione
+                  </div>
+                </div>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Assegnazione</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="list-group lg-right">
+              <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Selezione</h6>
+                  </div>
+                </div>
+              </div>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="condizione" aria-current="true">
+                <div class="diagram-small condizione">
+                  <div class="content">
+                    Condizione
+                  </div>
+                </div>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Condizione</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="chiamata" aria-current="true">
+                <div class="diagram-small chiamata">
+                  <div class="content">
+                    Chiamata
+                  </div>
+                </div>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Chiamata</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+              <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Varie</h6>
+                  </div>
+                </div>
+              </div>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="commento" aria-current="true">
+                <div class="diagram-small commento">
+                  <div class="content">
+                    Commento
+                  </div>
+                </div>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Commento</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+              <button class="list-group-item list-group-item-action d-flex gap-3 py-3" id="diagramBtn"
+                diagram-type="interuzione" aria-current="true">
+                <svg viewBox="0 0 75 75" width="67px" class="diagram-small interruzione">
+                  <path d="m5,22 18,-18 28,0 18,18 0,28 -18,18, -28,0 -18,-18z" fill="red" stroke="#aaa"
+                    stroke-width="1.5px" />
+                </svg>
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Interruzione</h6>
+                    <p class="mb-0 opacity-75">Descrizione</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="diagram funzione" id="diagram">
+        <button class="connector top" id="connector"></button>
+        Funzione
+        <button class="connector bottom" id="connector"></button>
+      </div>
+      <div class="zoom-commands">
+        <button id="zoom-plus"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+        <button id="zoom-minus"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+        <button id="zoom-reset"><i class="fa-solid fa-crosshairs"></i></button>
+      </div>
+      <div class="line" id="line"></div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --background: #232530;
+    --dark: #3a3a51;
+    --dg-funzione: #6c12b5;
+    --dg-dichiarazione: #be6060;
+    --dg-dichiarazione-dark: #874545;
+    --dg-assegnazione: #db8989;
+    --dg-lettura: #0251d0;
+    --dg-scrittura: #1a8b1a;
+    --dg-condizione: #930000;
+    --dg-chiamata: #6c12b5;
+    --dg-chiamata-dark: #4c1976;
+    --dg-mentre: #dd00ff;
+
+    --blue: #6e59a9;
+}
+
+html,
+body {
+    user-select: none;
+    background-color: var(--background);
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+* {
+    font-family: "Lexend";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-width: 90%;
+    height: 100%;
+}
+
+.canvas {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 125px);
+
+    padding-right: calc(1.5rem * .5);
+    padding-left: calc(1.5rem * .5);
+    margin-right: auto;
+    margin-left: auto;
+
+    border: 2px dashed #495057;
+    border-radius: 25px;
+
+    position: relative;
+}
+
+.diagram {
+    --_border: var(--border, #aaa);
+    --_color: var(--color, var(--dark));
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+
+    width: 180px;
+    max-width: 225px;
+
+    height: 60px;
+    max-height: 75px;
+
+    background-color: var(--_color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: solid 1.5px var(--_border);
+
+    font-size: 22px;
+
+    transition: 0s;
+}
+
+.diagram .content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram .connector {
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    border: 1.5px solid white;
+    background-color: rgba(0, 0, 0, 1);
+
+    position: absolute;
+    z-index: 1;
+}
+
+.diagram .connector.top {
+    top: -7.5px;
+}
+
+.diagram .connector.bottom {
+    bottom: -7.5px;
+}
+
+.funzione {
+    --color: var(--dg-funzione);
+    border-radius: 50px;
+}
+
+.dichiarazione {
+    --color: var(--dg-dichiarazione);
+    border-radius: 5px;
+}
+
+.dichiarazione .h-line {
+    position: absolute;
+    left: 0;
+    top: 10px;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: var(--dg-dichiarazione-dark);
+}
+
+.dichiarazione .v-line {
+    position: absolute;
+    top: 0;
+    left: 10px;
+
+    width: 2px;
+    height: 100%;
+
+    background-color: var(--dg-dichiarazione-dark);
+}
+
+
+.chiamata {
+    --color: var(--dg-chiamata);
+    border-radius: 5px;
+}
+
+.chiamata .line-a {
+    position: absolute;
+    left: 6px;
+
+    height: 100%;
+    width: 2px;
+
+    background-color: var(--dg-chiamata-dark);
+}
+
+.chiamata .line-b {
+    position: absolute;
+    right: 6px;
+
+    height: 100%;
+    width: 2px;
+
+    background-color: var(--dg-chiamata-dark);
+}
+
+.chiamata .content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.assegnazione {
+    --color: var(--dg-assegnazione);
+    border-radius: 5px;
+}
+
+.lettura,
+.scrittura {
+    --color: var(--dg-lettura);
+    border-radius: 5px;
+
+    transform: skew(-15deg);
+}
+
+.lettura .content,
+.scrittura .content {
+    transform: skew(15deg);
+}
+
+
+.scrittura {
+    --color: var(--dg-scrittura);
+}
+
+
+.condizione,
+.mentre {
+    --color: var(--dg-condizione);
+
+    width: 90px;
+    height: 100px;
+    max-height: 90px;
+
+    transform: rotate(-45deg) skew(10deg, 10deg);
+}
+
+.condizione .content,
+.mentre .content {
+    margin: auto;
+
+    transform: skew(-10deg, -10deg) rotate(45deg);
+}
+
+.mentre {
+    --color: var(--dg-mentre);
+}
+
+
+.canvas .commands {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas .commands button {
+    width: 50px;
+    height: 30px;
+
+    margin: 5px;
+    border-radius: 50px;
+
+    background-color: transparent;
+    color: #495057;
+    border: 2px dashed #495057;
+
+    transition: .25s;
+}
+
+.canvas .commands button:hover {
+    color: #fff;
+    border: 2px dashed #fff;
+}
+
+.canvas .zoom-commands {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas .zoom-commands button {
+    width: 50px;
+    height: 30px;
+
+    margin: 5px;
+    border-radius: 50px;
+
+    background-color: transparent;
+    color: #495057;
+    border: 2px dashed #495057;
+
+    transition: .25s;
+}
+
+.canvas .zoom-commands button:hover {
+    color: #fff;
+    border: 2px dashed #fff;
+}
+
+#zoom-plus {
+    cursor: zoom-in;
+}
+
+#zoom-minus {
+    cursor: zoom-out;
+}
+
+#zoom-reset {
+    cursor: crosshair;
+}
+
+.diagram-small {
+    position: relative;
+
+    width: 150px;
+
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: solid 1.5px #aaa;
+
+    font-size: 12px;
+}
+
+.diagram-small.dichiarazione .v-line {
+    left: 3px;
+}
+
+.diagram-small.dichiarazione .h-line {
+    top: 3px;
+}
+
+.diagram-small.dichiarazione p {
+    position: absolute;
+    left: calc(50% + 1.5px);
+    top: calc(50% + 1.5px);
+    transform: translate(-50%, -50%);
+}
+
+
+.diagram-small.chiamata .line-a {
+    left: 3px;
+}
+
+.diagram-small.chiamata .line-b {
+    right: 3px;
+}
+
+.diagram-small.condizione {
+    margin: 0 20px;
+
+    width: 50px;
+    height: 50px;
+}
+
+
+.diagram-small.commento {
+    border: 2px dashed white;
+    border-radius: 10px;
+}
+
+.diagram-small.interruzione {
+    border: none;
+}
+
+.list-group {
+    min-width: 315px;
+}
+
+.lg-left .list-group-item:first-child {
+    border-top-right-radius: 0px;
+}
+
+.lg-left .list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+}
+
+
+.lg-right .list-group-item:first-child {
+    border-top-left-radius: 0px;
+}
+
+.lg-right .list-group-item:last-child {
+    border-bottom-left-radius: 0px;
+}
+
+.opacity-75 {
+    font-size: 13px;
+}
+
+#contextMenu {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: fit-content;
+    height: fit-content;
+
+    z-index: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.line {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    transform-origin: left;
+    transform: rotate(0rad);
+
+    background-color: white;
+    border-radius: 5px;
+}
